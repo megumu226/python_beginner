@@ -1,0 +1,14 @@
+1:Eclipse
+  Pleiades - Eclipse プラグイン日本語化プラグイン
+    http://mergedoc.osdn.jp/
+    環境に合ったパッケージ(Ultimate edition)をダウンロード。
+    解凍ツールでの展開はせずに、エクスプローラーでzipの中身を見てpleiadesフォルダをドラッグ&ドロップしたほうがいい。
+    (フォルダ名が長すぎて、解凍ツールだとうまく解凍できない場合がある)
+    c:\dev\bin\ とかに。
+
+2:python
+  Anaconda
+  https://www.continuum.io/downloads
+  環境に合ったパッケージをダウンロード。
+  exeを実行してインストール。
+  c:\dev\bin\ とかに。
