@@ -12,3 +12,10 @@
   環境に合ったパッケージをダウンロード。
   exeを実行してインストール。
   c:\dev\bin\ とかに。
+
+3:EclipseとAnacondaの連携
+  http://www.gixo.jp/blog/3861/
+  Eclipseの初回起動時に、インタープリタ指定でPython3をOFFにして起動。
+  設定>PyDev>インタープリタ>python intepreter
+  「新規」でAnacondaのpyhton.exeを指定。
+  インタープリタのリストの先頭に移動。
