@@ -1,0 +1,60 @@
+http://pepper.is.sci.toho-u.ac.jp/index.php?%A5%CE%A1%BC%A5%C8%2FPython%A4%AB%A4%E9Excel%A5%D5%A5%A1%A5%A4%A5%EB%A4%F2%A4%A4%A4%B8%A4%EBopenpyxl
+
+PythonからExcelファイルをいじるopenpyxl †
+ポイント：
+
+Pythonのパッケージopenpyxlで、Excelのファイル ***.xlsx を操作できる
+対象は、Office2007以降で使われているxlsxファイルのみ。古いxlsファイルは不可。
+ドキュメントはまだ完備まで行かない感じ、参考ページも少なくて、場合によってはソースを見る必要ありそう
+参照ページ
+
+ドキュメント
+PDF ドキュメント　　openpyxl Documenttation Release 2.0.2
+ソース
+tunanosuke blog　openpyxl モジュールで excel 操作
+openpyxlの使い方（背景色と罫線をつける）
+↑
+インストール †
+pip install openpyxl
+または
+
+easy_install openpyxl
+イメージを入れたければ、pillowが必要。今は省略。
+
+pip install pillow
+↑
+使い方のサンプル †
+注： UTF-8で漢字もＯＫだった。
+
+上記のブログにもサンプルがあるし、ドキュメントの中にもサンプルがある。
+
+↑
+例　ファイルを読んで、セルを取り出したり、書き込んだり、加工したりする †
+
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import sys, codecs
+sys.stdout = codecs.getwriter('utf_8')(sys.stdout)
+
+from openpyxl import load_workbook
+from openpyxl.styles import Font, Color, colors
+from openpyxl.styles import PatternFill
+（この辺はいろいろと）
+
+wb = load_workbook(filename='mytest.xlsx')   Excelのブックファイルを読み出す
+ws = wb.active　　　アクティブなシートを取り出す。シート名でも取り出せるらしい。
+                    漢字のシート名については要チェックかも。
+これで、シートを操作できるようになる。全く新しくシートを作る時は別項で。
+
+A3 = ws['A3']　　　A2セルを読み出して、変数A2にアサイン。A2は値そのものではない。
+print(A3,value)    A2セルの値は、.valueで抽出
+u'c'               値u'c'が読める
+
+E5 = ws['E5']
+f5 = Font(color=colors.RED)   後で使うためにf5という名前で「フォント色指定・赤」を作る
+E5.font = f5　　f5をE5の.fontに代入して、font色指定プロパティを赤にする
+
+ws['D4'] = u'山田太郎'         漢字も使える
+ws['D4].font = Font(color=colors.GREEN)   別にD4.font=Font(...)と直接書いてもいい。
+
+wb.save('mytest.xlsx')　この状態でファイルにセーブ。
